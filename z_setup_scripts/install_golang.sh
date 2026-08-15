@@ -5,7 +5,9 @@ source "$SCRIPT_DIR/_helpers.sh"
 source "$SCRIPT_DIR/_config.sh"
 
 install_golang() {
-  if go version >/dev/null 2>&1; then
+  # PATH may not carry /usr/local/go/bin in the setup shell, so check the
+  # install location directly -- otherwise this reinstalls Go on every run.
+  if go version >/dev/null 2>&1 || /usr/local/go/bin/go version >/dev/null 2>&1; then
     print_info "Golang is already installed ..."
   else
     print_info "Installing Golang ..."

@@ -99,12 +99,28 @@ export PATH=$PATH:$HOME/.cargo/bin
 export DOTFILES=$DOTFILESPATH
 export PAGER="most"
 
-source "${ME}"/.gptkey
+if [ -f "${ME}"/.gptkey ] ; then
+    source "${ME}"/.gptkey
+fi
 
 clear
 fastfetch
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-. "$HOME/.cargo/env"
-. "/home/marcogomez/.deno/env"
-source /home/marcogomez/.local/share/bash-completion/completions/deno.bash
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# deno -- installed with --no-modify-path, so ~/.deno/env is never created.
+if [ -d "$HOME/.deno/bin" ] ; then
+    export PATH="$HOME/.deno/bin:$PATH"
+fi
+
+# pnpm -- installed with the rc-writing step suppressed, so PATH is set here.
+export PNPM_HOME="$HOME/.local/share/pnpm"
+if [ -d "$PNPM_HOME/bin" ] ; then
+    export PATH="$PNPM_HOME/bin:$PATH"
+fi
+
+# Keep this last block returning 0: setup recipes run `source ~/.bashrc || handle_error`.
+if [ -f "$HOME/.local/share/bash-completion/completions/deno.bash" ] ; then
+    source "$HOME/.local/share/bash-completion/completions/deno.bash"
+fi

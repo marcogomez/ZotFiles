@@ -86,4 +86,14 @@ fi
 if [ -f "$HOME/.cargo/env" ] ; then
     . "$HOME/.cargo/env"
 fi
-. "/home/marcogomez/.deno/env"
+
+# deno -- installed with --no-modify-path, so ~/.deno/env is never created.
+if [ -d "$HOME/.deno/bin" ] ; then
+    PATH=$HOME/.deno/bin:$PATH
+fi
+
+# pnpm -- installed with the rc-writing step suppressed, so PATH is set here.
+export PNPM_HOME="$HOME/.local/share/pnpm"
+if [ -d "$PNPM_HOME/bin" ] ; then
+    PATH=$PNPM_HOME/bin:$PATH
+fi

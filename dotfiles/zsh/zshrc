@@ -121,3 +121,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+# pnpm -- installed with the rc-writing step suppressed, so PATH is set here.
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME/bin:$PATH"
