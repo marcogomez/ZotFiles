@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#=============================================================================
+# @TheCodeTherapy - https://mgz.me
+# Wofi app launcher
+# To use, create a custom keyboard shortcut by following below instructions:
+# Settings -> Keyboard -> Keyboard Shortcuts -> View and Customise Shortcuts ->
+# -> Custom Shortcuts -> + ->
+# Name: Wofi Launcher
+# Command: [full path to this script file]
+# Shortcut: Super + Tab (or any other you might want)
+#=============================================================================
+
+# NOTE: rofi's `-show window` (window switcher) has no wofi equivalent — wofi
+# only launches apps, and GNOME does not let external tools switch windows.
+# For switching between open windows, use Alt+Tab or the Activities overview.
+# Styling and size come from ~/.config/wofi; --normal-window keeps it centered.
+wofi --show drun --allow-images --prompt "Apps" --normal-window
+

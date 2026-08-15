@@ -1,0 +1,49 @@
+/* Minimal rounded dark wofi theme */
+
+window {
+  margin: 0;
+  border: 2px solid #5e81ac;
+  border-radius: 12px;
+  background-color: #2e3440;
+  font-family: "JetBrainsMono Nerd Font", "Noto Color Emoji", monospace;
+  font-size: 16px;
+}
+
+#outer-box {
+  margin: 8px;
+}
+
+#input {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  color: #eceff4;
+  background-color: #3b4252;
+}
+
+#input:focus {
+  border: none;
+  outline: none;
+}
+
+#scroll {
+  margin: 0;
+}
+
+#entry {
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+#entry:selected {
+  background-color: #5e81ac;
+}
+
+#text {
+  color: #d8dee9;
+}
+
+#entry:selected #text {
+  color: #eceff4;
+}

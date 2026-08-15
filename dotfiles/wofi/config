@@ -1,0 +1,6 @@
+# wofi behaviour (styling lives in style.css)
+prompt=Emoji
+width=350
+height=450
+insensitive=true
+hide_scroll=true
